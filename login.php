@@ -23,6 +23,10 @@ switch($_POST['action']){
 		break;
 }
 
+if($_GET['error'] == 1){
+	echo '<script type="text/javascript">Popups.errorLogin.Show();</script>';
+}
+
 ?>
 
 <div class="columns">

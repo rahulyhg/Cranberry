@@ -17,6 +17,7 @@ use Cranberry\User;
 
 		<script type="text/javascript" src="core/scripts/NavbarBurger.js"></script>
 		<script type="text/javascript" src="core/scripts/Popup.js"></script>
+		<script type="text/javascript" src="core/scripts/Popups.js"></script>
 	</head>
 	<body>
 		<main>
@@ -37,10 +38,6 @@ use Cranberry\User;
 					<div class="navbar-end">
 						<a class="navbar-item" href="index.php">
 							Home
-						</a>
-
-						<a class="navbar-item" href="about.php">
-							About
 						</a>
 
 						<?php
