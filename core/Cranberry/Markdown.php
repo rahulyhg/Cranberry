@@ -13,7 +13,7 @@ class Markdown
 {
     # ~
 
-    const version = '1.8.0-beta-5';
+    const version = '1.8.0-beta-5-bulma';
 
     # ~
 
@@ -539,6 +539,9 @@ class Markdown
         $Block = array(
             'element' => array(
                 'name' => 'h' . $level,
+	            'attributes' => array(
+		            'class' => 'is-size-' . $level
+	            ),
                 'handler' => array(
                     'function' => 'lineElements',
                     'argument' => $text,
@@ -978,6 +981,9 @@ class Markdown
             'identified' => true,
             'element' => array(
                 'name' => 'table',
+	            'attributes' => array(
+		            'class' => 'table'
+	            ),
                 'elements' => array(),
             ),
         );
