@@ -39,15 +39,18 @@ if($_GET['error'] == 1){
 					<input type="text" name="username" class="input" />
 				</div>
 			</div>
-				<div class="field">
+
+			<div class="field">
 				<label class="label">Password</label>
 				<div class="control">
 					<input type="password" name="password" class="input" />
 				</div>
 			</div>
-				<div class="control">
+
+			<div class="control">
 				<input type="submit" value="Login" class="button is-primary is-fullwidth" />
 			</div>
+
 			<input type="hidden" name="action" value=1 />
 		</form>
 	</div>
