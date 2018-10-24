@@ -6,11 +6,11 @@ use Cranberry\User;
 use Cranberry\Database;
 
 if($_POST['action'] === 'update' && User::GetCurrentUser() !== null){
-	Database::Execute('UPDATE users SET bio = ? WHERE username = ?', [$_POST['bio'], User::GetCurrentUser()->username]);
+	Database::ExecOnly('UPDATE users SET bio = ? WHERE username = ?', [$_POST['bio'], User::GetCurrentUser()->username]);
 
 	if(!empty($_POST['email']) && $_POST['email'] !== User::GetCurrentUser()->email) {
 		if (filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
-			Database::Execute('UPDATE users SET email = ? WHERE username = ?', [$_POST['email'], User::GetCurrentUser()->username]);
+			Database::ExecOnly('UPDATE users SET email = ? WHERE username = ?', [$_POST['email'], User::GetCurrentUser()->username]);
 		}
 		else {
 			header('Location: profile.php?error=1');
@@ -19,7 +19,7 @@ if($_POST['action'] === 'update' && User::GetCurrentUser() !== null){
 
 	if(!empty($_POST['newpass'])){
 		if(User::GetCurrentUser()->Verify($_POST['oldpass'])){
-			Database::Execute('UPDATE users SET password = ? WHERE username = ?', [password_hash($_POST['newpass'], PASSWORD_DEFAULT), User::GetCurrentUser()->username]);
+			Database::ExecOnly('UPDATE users SET password = ? WHERE username = ?', [password_hash($_POST['newpass'], PASSWORD_DEFAULT), User::GetCurrentUser()->username]);
 
 			$_SESSION['password'] = $_POST['newpass'];
 

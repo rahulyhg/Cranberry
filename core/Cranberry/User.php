@@ -32,7 +32,7 @@ class User {
 
 	public function GetGroup(){
 		if($this !== null){
-			$dbGroup = Database::Execute('SELECT name FROM groups WHERE id = ?', [$this->groupid]);
+			$dbGroup = Database::ExecReturn('SELECT name FROM groups WHERE id = ?', [$this->groupid]);
 
 			return $dbGroup['name'];
 		}
@@ -43,7 +43,7 @@ class User {
 
 	public static function CreateUser($user){
 		if(!self::UserExists($user->username)){
-			Database::Execute('INSERT INTO users (username, password, groupid, joined) VALUES (?, ?, ?, CURDATE())', [$user->username, $user->password, $user->groupid]);
+			Database::ExecReturn('INSERT INTO users (username, password, groupid, joined) VALUES (?, ?, ?, CURDATE())', [$user->username, $user->password, $user->groupid]);
 
 			return true;
 		}
@@ -53,13 +53,13 @@ class User {
 	}
 
 	public static function UserExists($username){
-		return !empty(Database::Execute('SELECT groupid FROM users WHERE username = ?', [$username]));
+		return !empty(Database::ExecReturn('SELECT groupid FROM users WHERE username = ?', [$username]));
 	}
 
 	public static function GetUser($username){
 		if(self::UserExists($username)){
-			$dbUser = Database::Execute('SELECT username, password, email, groupid FROM users WHERE username = ?', [$username]);
-			$dbUserExtra = Database::Execute('SELECT bio, joined FROM users WHERE username = ?', [$username]);
+			$dbUser = Database::ExecReturn('SELECT username, password, email, groupid FROM users WHERE username = ?', [$username]);
+			$dbUserExtra = Database::ExecReturn('SELECT bio, joined FROM users WHERE username = ?', [$username]);
 
 			return new User($dbUser['username'], $dbUser['password'], $dbUser['groupid'], $dbUser['email'], false, $dbUserExtra);
 		}
