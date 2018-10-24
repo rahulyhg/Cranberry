@@ -9,7 +9,7 @@ class User {
 	public $groupid;
 	public $extra;
 
-	public function __construct ($username, $password, $groupid, $hashPassword = true, $extra = null) {
+	public function __construct ($username, $password, $groupid, $email, $hashPassword = true, $extra = null) {
 		$this->username = $username;
 
 		if($hashPassword) {
@@ -20,6 +20,8 @@ class User {
 		}
 
 		$this->groupid = intval($groupid);
+
+		$this->email = $email;
 
 		$this->extra = $extra;
 	}
@@ -57,9 +59,9 @@ class User {
 	public static function GetUser($username){
 		if(self::UserExists($username)){
 			$dbUser = Database::Execute('SELECT username, password, email, groupid FROM users WHERE username = ?', [$username]);
-			$dbUserExtra = Database::Execute('SELECT bio, joined FROM users WHERE username = ?;', [$username]);
+			$dbUserExtra = Database::Execute('SELECT bio, joined FROM users WHERE username = ?', [$username]);
 
-			return new User($dbUser['username'], $dbUser['password'], $dbUser['groupid'], false, $dbUserExtra);
+			return new User($dbUser['username'], $dbUser['password'], $dbUser['groupid'], $dbUser['email'], false, $dbUserExtra);
 		}
 		else{
 			return null;

@@ -12,14 +12,22 @@ class Database{
 
 		try{
 			$sql->execute($vars);
+
+			return $sql->fetch();
 		}
 		catch(\PDOException $e){
-			if(Settings::$devMode){
+			/*
+			 * Let me explain - the 2nd part of this statement checks to see if the SQL statement still evaluated properly.
+			 * This allows you to use Database::Execute() for SQL statements that do not return any data (UPDATE) as well
+			 * as data producing statements (SELECT). If you run a data returning statement, 'return $sql->fetch();' will
+			 * fail, but because we detect the statement still ran properly, no error is thrown.
+			 */
+			if(Settings::$devMode && intval($sql->errorCode()) != 0){
 				die($e);
 			}
 		}
 
-		return $sql->fetch();
+		return null;
 	}
 
 	public static function MatchingRows($table, $column, $compValue){
@@ -30,6 +38,8 @@ class Database{
 
 		try{
 			$sql->execute([$compValue]);
+
+			return count($sql->fetchAll());
 		}
 		catch(\PDOException $e){
 			if(Settings::$devMode){
@@ -37,7 +47,7 @@ class Database{
 			}
 		}
 
-		return count($sql->fetchAll());
+		return null;
 	}
 }
 

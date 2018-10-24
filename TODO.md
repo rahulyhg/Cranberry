@@ -1,4 +1,4 @@
 # TODO
 
+* Improve Database class
 * Virtual pages with markdown
-* User edit page (profile.php)

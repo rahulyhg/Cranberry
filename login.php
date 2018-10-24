@@ -36,7 +36,7 @@ if($_GET['error'] == 1){
 			<div class="field">
 				<label class="label">Username</label>
 				<div class="control">
-					<input type="text" name="username" class="input" />
+					<input type="text" name="username" class="input" autofocus />
 				</div>
 			</div>
 
