@@ -45,8 +45,8 @@ switch($_GET['error']){
 	case 2:
 		echo "<script type=\"text/javascript\">Popups.errorNewPasswordWrongOld.Show();</script>";
 		break;
-	case '':
-		echo "<script type=\"text/javascript\">Popups.successProfileChanged.Show();</script>";
+	case -1:
+		echo "<script type=\"text/javascript\">Popups.successPasswordChanged.Show();</script>";
 }
 
 ?>
