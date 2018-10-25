@@ -21,6 +21,8 @@ class Session{
 	private static function Verify(){
 		if(!User::GetCurrentUser()->Verify($_SESSION['password'])){
 			self::Destroy();
+
+			header('Location: login.php');
 		}
 	}
 }

@@ -10,10 +10,10 @@ class Settings {
 	public static $dbPass;
 	public static $dbHost;
 	public static $dbName;
+	public static $mediaPath;
 
 	//database stuff
 	public static $dbCon;
-	public static $s;
 
 	public static function Connect(){
 		try{

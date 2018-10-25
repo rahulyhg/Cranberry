@@ -8,5 +8,6 @@ Settings::$dbUser			= "cranberry";
 Settings::$dbPass			= "pass1234";
 Settings::$dbHost			= "localhost";
 Settings::$dbName			= "cranberry";
+Settings::$mediaPath        = "/var/www/html/cranberry-media";
 
 ?>
