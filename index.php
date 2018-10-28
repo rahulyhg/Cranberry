@@ -2,6 +2,8 @@
 
 require_once('core/header.php');
 
+header('Location: page.php?id=index');
+
 ?>
 
 

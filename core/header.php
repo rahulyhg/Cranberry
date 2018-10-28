@@ -3,6 +3,7 @@
 require_once('core/require.php');
 
 use Cranberry\User;
+use Cranberry\Page;
 
 ?>
 
@@ -18,6 +19,7 @@ use Cranberry\User;
 		<script type="text/javascript" src="core/scripts/NavbarBurger.js"></script>
 		<script type="text/javascript" src="core/scripts/Popup.js"></script>
 		<script type="text/javascript" src="core/scripts/Popups.js"></script>
+		<script type="text/javascript" src="core/scripts/Ajax.js"></script>
 	</head>
 	<body>
 		<main>
@@ -36,9 +38,15 @@ use Cranberry\User;
 
 				<div id="navbarItems" class="navbar-menu">
 					<div class="navbar-end">
-						<a class="navbar-item" href="index.php">
-							Home
-						</a>
+						<?php
+
+						foreach (Page::GetNavPages() as $page){ ?>
+							<a class="navbar-item" href="<?=$page[0]?>">
+								<?=$page[1]?>
+							</a>
+						<?php }
+
+						?>
 
 						<?php
 						if(User::GetCurrentUser()->groupid === 0){ ?>
