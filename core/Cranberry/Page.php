@@ -11,12 +11,12 @@ class Page{
 	public $isInNav;
 	public $navOrder;
 
-	public function __construct($id, $name, $bodyMarkdown = null, $bodyHTML = null, $isInNav = 1, $navOrder = 0) {
+	public function __construct($id, $name, $bodyMarkdown = null, $bodyHTML = null, $lastEdit = null, $isInNav = 1, $navOrder = 0) {
 		$this->id = $id;
 		$this->name = $name;
 		$this->bodyMarkdown = $bodyMarkdown;
 		$this->bodyHTML = $bodyHTML;
-		$this->lastEdit = date('Y-m-d H:i:s');
+		$this->lastEdit = $lastEdit === null ? date('Y-m-d H:i:s') : $lastEdit;
 		$this->isInNav = $isInNav;
 		$this->navOrder = $navOrder;
 	}
@@ -29,6 +29,10 @@ class Page{
 		$markdownConverter = new Markdown();
 
 		$this->bodyHTML = $markdownConverter->text($this->bodyMarkdown);
+	}
+
+	public function ToString(){
+		//TODO: This method for ajax interfacing
 	}
 
 	public static function GetPage($id){

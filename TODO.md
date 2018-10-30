@@ -1,3 +1,5 @@
 # TODO
 
-* Virtual pages with markdown
+* Page editor
+* Page.ToString()
+* See internal TODOs
