@@ -1,5 +1,5 @@
 # TODO
 
 * Page editor
-* Page.ToString()
+* Page __toString() magic method
 * See internal TODOs
