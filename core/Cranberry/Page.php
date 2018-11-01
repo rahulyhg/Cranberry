@@ -3,10 +3,10 @@
 namespace Cranberry;
 
 class Page{
+	public $id;
 	public $name;
 	public $bodyMarkdown;
 	public $bodyHTML;
-	public $id;
 	public $lastEdit;
 	public $isInNav;
 	public $navOrder;
@@ -31,8 +31,8 @@ class Page{
 		$this->bodyHTML = $markdownConverter->text($this->bodyMarkdown);
 	}
 
-	public function ToString(){
-		//TODO: This method for ajax interfacing
+	public function __toString(){
+		return json_encode($this);
 	}
 
 	public static function GetPage($id){

@@ -3,6 +3,7 @@
 require_once('require.php');
 
 use Cranberry\User;
+use Cranberry\Page;
 use Cranberry\Database;
 use Cranberry\Markdown;
 
@@ -26,11 +27,20 @@ if(User::GetCurrentUser()->groupid === 0) {
 				array_push($pagesUser, $page[0]);
 			}
 
-			$pageString = implode(',', $pagesReq);
-			$pageString .= '|';
-			$pageString .= implode(',', $pagesUser);
+			$pageString = implode('|', [implode(',', $pagesReq), implode(',', $pagesUser)]);
 
 			echo $pageString;
+			break;
+		case 'GetPage':
+			$page = Page::GetPage($_POST['page']);
+
+			if($page !== null){
+				echo $page;
+			}
+			else{
+				echo new Page('Empty Page', 'Empty Page');
+			}
+
 			break;
 		case 'GetHTML':
 			$markdown = new Markdown();

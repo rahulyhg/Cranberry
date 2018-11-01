@@ -8,24 +8,22 @@ use Cranberry\User;
 if(User::GetCurrentUser()->groupid === 0){ ?>
 
 	<div class="columns">
-		<div id="pageList" class="column is-one-fifth is-full-mobile">
-			<div id="pageListRequired">
+		<div id="pages" class="column is-one-fifth is-full-mobile">
+			<p class="subtitle has-text-centered">Pages</p>
+			<div id="pageList">
 
-			</div>
-
-			<div id="pageListUser" class="box">
-				No pages to show.
 			</div>
 		</div>
 
 		<div class="column is-three-fifths is-full-mobile">
+			<p id="pageTitle" class="subtitle has-text-centered">Select a page to edit.</p>
 			<div class="columns">
 				<div class="column is-half is-full-mobile">
-					<textarea id="editorMD" class="textarea" style="resize: none;" rows="25"></textarea>
+					<textarea id="editorMD" class="textarea" style="resize: none;" rows="24" disabled></textarea>
 				</div>
 
 				<div id="editorHTML" class="column is-half is-full-mobile">
-					Select a page to edit.
+
 				</div>
 			</div>
 		</div>

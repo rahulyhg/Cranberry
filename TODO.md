@@ -1,5 +1,3 @@
 # TODO
 
-* Page editor
-* Page __toString() magic method
-* See internal TODOs
+* Page editor load page meta
